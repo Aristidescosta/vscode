@@ -1,5 +1,31 @@
 # Histórico de Modificações
 
+## 0.10.14
+
+- Correções de _bugs_ e ajustes em dialetos do VisuAlg e Potigol.
+
+## 0.10.13
+
+- Formatador de código em Potigol (extensão `.poti`): https://github.com/DesignLiquido/delegua/pull/660
+- Correções de _bugs_ e ajustes em dialetos do VisuAlg e Delégua.
+
+## 0.10.12
+
+- Ajustes em Delégua quanto à escrita de primitivas como texto.
+
+## 0.10.11
+
+- Diversos ajustes em Delégua e dialetos quanto a forma de escrita de certas variáveis, e organização arquitetural dos pacotes.
+
+## 0.10.10
+
+- Declaração `tendo ... como` para Delégua: https://github.com/DesignLiquido/delegua/pull/639.
+
+## 0.10.9
+
+- Funcionalidade de tuplas para Delégua: https://github.com/DesignLiquido/delegua/pull/627;
+- Funcionalidade de formatação de código para o VisuAlg: https://github.com/DesignLiquido/delegua/pull/626.
+
 ## 0.10.8
 
 - Novas primitivas para dicionários em Delégua: `dicionario.chaves()` e `dicionario.valores()`. 

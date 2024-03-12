@@ -2,15 +2,15 @@ import * as vscode from 'vscode';
 import * as sistemaOperacional from 'node:os';
 
 
-import { FormatadorVisualG } from '@designliquido/delegua/fontes/formatadores';
-import { LexadorVisuAlg } from '@designliquido/delegua/fontes/lexador/dialetos';
-import { AvaliadorSintaticoVisuAlg } from '@designliquido/delegua/fontes/avaliador-sintatico/dialetos';
+import { FormatadorVisuAlg } from '@designliquido/delegua/formatadores';
+import { LexadorVisuAlg } from '@designliquido/delegua/lexador/dialetos';
+import { AvaliadorSintaticoVisuAlg } from '@designliquido/delegua/avaliador-sintatico/dialetos';
 
 export class VisualgProvedorFormatacao implements vscode.DocumentFormattingEditProvider {
     provideDocumentFormattingEdits(document: vscode.TextDocument, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
         const lexador = new LexadorVisuAlg();
         const avaliadorSintatico = new AvaliadorSintaticoVisuAlg();
-        const formatador = new FormatadorVisualG(sistemaOperacional.EOL);
+        const formatador = new FormatadorVisuAlg(sistemaOperacional.EOL);
 
         const resultadoLexador = lexador.mapear(document.getText().split('\n'), -1);
         const resultadoAvaliacaoSintatica = avaliadorSintatico.analisar(resultadoLexador, -1);

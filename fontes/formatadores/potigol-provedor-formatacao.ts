@@ -1,15 +1,16 @@
 import * as vscode from 'vscode';
 import * as sistemaOperacional from 'node:os';
 
-import { AvaliadorSintatico } from '@designliquido/delegua/avaliador-sintatico';
-import { FormatadorDelegua } from '@designliquido/delegua/formatadores';
-import { Lexador } from '@designliquido/delegua/lexador';
 
-export class DeleguaProvedorFormatacao implements vscode.DocumentFormattingEditProvider {
+import { FormatadorPotigol } from '@designliquido/delegua/formatadores';
+import { LexadorPotigol } from '@designliquido/delegua/lexador/dialetos';
+import { AvaliadorSintaticoPotigol } from '@designliquido/delegua/avaliador-sintatico/dialetos';
+
+export class PotigolProvedorFormatacao implements vscode.DocumentFormattingEditProvider {
     provideDocumentFormattingEdits(document: vscode.TextDocument, options: vscode.FormattingOptions, token: vscode.CancellationToken): vscode.ProviderResult<vscode.TextEdit[]> {
-        const lexador = new Lexador();
-        const avaliadorSintatico = new AvaliadorSintatico(false);
-        const formatador = new FormatadorDelegua(sistemaOperacional.EOL);
+        const lexador = new LexadorPotigol();
+        const avaliadorSintatico = new AvaliadorSintaticoPotigol();
+        const formatador = new FormatadorPotigol(sistemaOperacional.EOL);
 
         const resultadoLexador = lexador.mapear(document.getText().split('\n'), -1);
         const resultadoAvaliacaoSintatica = avaliadorSintatico.analisar(resultadoLexador, -1);
@@ -19,7 +20,7 @@ export class DeleguaProvedorFormatacao implements vscode.DocumentFormattingEditP
         } catch (erro) {
             console.error(erro);
         }
-        
+
         return [
             vscode.TextEdit.replace(
                 new vscode.Range(
